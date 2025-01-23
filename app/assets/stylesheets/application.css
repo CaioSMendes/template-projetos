@@ -8,3 +8,56 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ /* Estilo para o container dos logs */
+.logs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  /* Estilo para cada card */
+  .log-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  /* Títulos dos logs */
+  .log-card h3 {
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo para cada linha de informação */
+  .log-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 8px 0;
+  }
+  
+  /* Para destacar parâmetros e informações sensíveis */
+  .log-details {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+  }
+  
+  /* Diferenciar o cabeçalho dos parâmetros */
+  .log-details p {
+    font-weight: bold;
+  }
+  
+  /* Truncar conteúdo longo, mas mostrar o início */
+  .log-card p strong {
+    font-weight: bold;
+    color: #333;
+  }
+  

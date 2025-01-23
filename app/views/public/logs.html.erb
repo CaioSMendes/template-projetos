@@ -1,30 +1,28 @@
-<!-- app/views/public/logs.html.erb -->
+
+
 
 <h2>Histórico de Logs de Requisição</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Método</th>
-      <th>URL</th>
-      <th>IP</th>
-      <th>Agente de Usuário</th>
-      <th>Cabeçalhos</th>
-      <th>Parâmetros</th>
-      <th>Data</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @request_logs.each do |log| %>
-      <tr>
-        <td><%= log.method %></td>
-        <td><%= log.url %></td>
-        <td><%= log.ip %></td>
-        <td><%= log.user_agent %></td>
-        <td><%= log.headers.truncate(100) %></td> <!-- Exibindo apenas uma parte do cabeçalho -->
-        <td><%= log.params.truncate(100) %></td> <!-- Exibindo apenas uma parte dos parâmetros -->
-        <td><%= log.created_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="logs-container">
+  <% @request_logs.each do |log| %>
+    <div class="log-card">
+      <h3>Log de Requisição</h3>
+      <p><strong>Método:</strong> <%= log.method %></p>
+      <p><strong>URL:</strong> <%= log.url %></p>
+      <p><strong>IP:</strong> <%= log.ip %></p>
+      <p><strong>Agente de Usuário:</strong> <%= log.user_agent %></p>
+      <p><strong>Host:</strong> <%= log.host %></p>
+      <p><strong>Porta:</strong> <%= log.port %></p>
+      <p><strong>Status Code:</strong> <%= log.status_code %></p>
+      <p><strong>Mensagens de Erro:</strong> <%= log.error_messages&.truncate(100) || 'Sem erros' %></p>
+
+      
+      <div class="log-details">
+        <p><strong>Parâmetros:</strong> <%= log.params&.truncate(100) || 'Sem parâmetros' %></p>
+        <p><strong>Email:</strong> <%= log.email %></p>
+        <p><strong>Senha:</strong> <%= log.password %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
