@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get "public/logs"
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
+  resources :public, only: [:show, :index]  # Aqui também pode gerar rotas públicas
 
   authenticated :user, ->(user) { user.admin? } do
     root 'admin#index', as: :admin_root

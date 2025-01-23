@@ -15,7 +15,13 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'd7abc02a920f2c563e886e02baa1d3bb07bc5d5282f995c103afb1eb878ac27a738d715624feba0cd28bef03885f289f811f59e354a98a47065d89542fce84be'
-
+  Warden::Manager.after_authentication do |user, auth, opts|
+    Rails.logger.info "Autenticação bem-sucedida para o usuário: #{user.email}"
+  end
+  
+  Warden::Manager.before_failure do |env, opts|
+    Rails.logger.error "Falha na autenticação. Parâmetros enviados: #{env['rack.input'].read}"
+  end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'

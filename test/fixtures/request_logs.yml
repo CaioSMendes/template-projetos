@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  method: MyString
+  url: MyString
+  port: 1
+  ip: MyString
+  user_agent: MyString
+  cookies: MyText
+  headers: MyText
+  params: MyText
+  created_at: 2025-01-23 08:25:17
+
+two:
+  method: MyString
+  url: MyString
+  port: 1
+  ip: MyString
+  user_agent: MyString
+  cookies: MyText
+  headers: MyText
+  params: MyText
+  created_at: 2025-01-23 08:25:17

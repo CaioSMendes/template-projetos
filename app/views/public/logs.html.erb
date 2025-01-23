@@ -1,0 +1,30 @@
+<!-- app/views/public/logs.html.erb -->
+
+<h2>Histórico de Logs de Requisição</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Método</th>
+      <th>URL</th>
+      <th>IP</th>
+      <th>Agente de Usuário</th>
+      <th>Cabeçalhos</th>
+      <th>Parâmetros</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @request_logs.each do |log| %>
+      <tr>
+        <td><%= log.method %></td>
+        <td><%= log.url %></td>
+        <td><%= log.ip %></td>
+        <td><%= log.user_agent %></td>
+        <td><%= log.headers.truncate(100) %></td> <!-- Exibindo apenas uma parte do cabeçalho -->
+        <td><%= log.params.truncate(100) %></td> <!-- Exibindo apenas uma parte dos parâmetros -->
+        <td><%= log.created_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
