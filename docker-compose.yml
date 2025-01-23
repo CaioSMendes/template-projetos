@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: 'postgres:14'
+    restart: always
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+      - ./postgres/config:/etc/postgresql/conf.d
+      - ./postgres/logs:/var/log/postgresql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Admin123
+      - POSTGRES_HOST=postgres
+
+  app:
+    depends_on:
+      - 'postgres'
+    build: .
+    command: bash start
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/smartlocker'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Admin123
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - FIRST_TIME_SETUP=true # Adicionando a variável de ambiente para configuração inicial
+
+volumes:
+  postgres:
+    driver: local
